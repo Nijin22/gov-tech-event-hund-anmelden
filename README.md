@@ -1,6 +1,8 @@
 # GovTech Event Workshopprozess "Hund anmelden"
 
-This repository contains a process for the GovTech Event in Berlin "Best Practices der Verwaltung: Mit Plattformen und Low-Code Verwaltung digitalisieren!".
+This repository contains a demo process for the GovTech Event in Berlin "Best Practices der Verwaltung: Mit Plattformen und Low-Code Verwaltung digitalisieren!".
+
+The demo process will be made available via this URL: https://dev.behoerden-serviceportal.de/onlineantraege/onlineantrag?prozessKey=m102.govTecEventHundAnmelden
 
 # License
 Copyright 2023 SEITENBAU GmbH

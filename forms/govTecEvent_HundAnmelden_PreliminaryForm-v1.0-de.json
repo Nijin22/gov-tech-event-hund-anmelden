@@ -1,0 +1,54 @@
+{
+  "id": "102:govTecEvent_HundAnmelden_PreliminaryForm:v1.0",
+  "title": "Hund anmelden",
+  "sections": [
+    {
+      "title": "",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "hintBox",
+                  "label": "Info",
+                  "type": "HINTBOX",
+                  "width": 12,
+                  "additionalConfig": {
+                    "@type": "AdditionalHintboxConfig",
+                    "text": "Dieser Onlineantrag wird für Sie vom Behörden-Serviceportal zur sicheren und zuverlässigen Kommunikation mit Ihrer Verwaltung zur Verfügung gestellt.\n\nWenn Sie auf \"Antrag starten\" klicken, öffnet sich das Antragsformular.",
+                    "status": "INFO"
+                  }
+                }
+              ]
+            }
+          ],
+          "id": "preliminaryFormGroup"
+        }
+      ]
+    }
+  ],
+  "customButtons": {
+    "buttons": [
+      {
+        "value": "continue",
+        "label": "Antrag starten",
+        "primary": true,
+        "helptext": ""
+      }
+    ],
+    "target": {
+      "service": "prozess",
+      "variableName": "clickedButton"
+    }
+  },
+  "source": {
+    "service": "prozess",
+    "variableName": "preliminaryForm"
+  },
+  "target": {
+    "service": "prozess",
+    "variableName": "preliminaryForm"
+  }
+}
