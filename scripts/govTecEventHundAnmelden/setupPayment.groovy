@@ -1,4 +1,4 @@
-package processIdHere
+package govTecEventHundAnmelden
 
 import de.seitenbau.serviceportal.scripting.api.v1.ScriptingApiV1
 import de.seitenbau.serviceportal.scripting.api.v1.payment.DisplayConfigV1

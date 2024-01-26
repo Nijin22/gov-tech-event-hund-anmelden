@@ -1,4 +1,4 @@
-package processIdHere
+package govTecEventHundAnmelden
 
 import commons.serviceportal.forms.FormDumper
 import de.seitenbau.serviceportal.scripting.api.v1.ScriptingApiV1
