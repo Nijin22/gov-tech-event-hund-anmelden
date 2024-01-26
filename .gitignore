@@ -48,3 +48,9 @@ gradle-app.setting
 .DS_Store
 ._*
 
+# Excel temporary
+~$*.xls*
+.~lock.*#
+
+# Secrets
+config/*secret*
