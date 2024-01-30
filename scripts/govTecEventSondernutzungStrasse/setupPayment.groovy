@@ -1,9 +1,8 @@
-package govTecEventHundAnmelden
+package govTecEventSondernutzungStrasse
 
 import de.seitenbau.serviceportal.scripting.api.v1.ScriptingApiV1
 import de.seitenbau.serviceportal.scripting.api.v1.payment.BerlinPaymentConfigV1
 import de.seitenbau.serviceportal.scripting.api.v1.payment.DisplayConfigV1
-import de.seitenbau.serviceportal.scripting.api.v1.payment.EpayBlPaymentConfigV1
 import de.seitenbau.serviceportal.scripting.api.v1.payment.PaymentConfigV1
 import de.seitenbau.serviceportal.scripting.api.v1.payment.TransactionConfigV1
 import groovy.json.JsonOutput
@@ -28,7 +27,7 @@ String costInCent = api.getStartParameter().parameters.get("costInCent")
 assert costInCent.isLong(): "Failed to configure payment. Process parameter 'costInCent' (value '$costInCent') " +
         "cannot be cast to data type 'long'."
 transactionConfig.betrag = costInCent.toLong()
-transactionConfig.verwendungszweck = "GovTechEvent Demozahlung Hund"
+transactionConfig.verwendungszweck = "GovTechEvent Demozahlung Strasse"
 api.setVariable("transactionConfig", JsonOutput.prettyPrint(JsonOutput.toJson(transactionConfig)))
 
 // Setup displayConfig

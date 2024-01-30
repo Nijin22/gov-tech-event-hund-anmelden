@@ -1,8 +1,8 @@
-# GovTech Event Workshopprozess "Hund anmelden"
+# GovTech Event Workshoprozess "Sondernutzung von Straßen beantragen"
 
 This repository contains a demo process for the GovTech Event in Berlin "Best Practices der Verwaltung: Mit Plattformen und Low-Code Verwaltung digitalisieren!".
 
-The demo process will be made available via this URL: https://dev.behoerden-serviceportal.de/onlineantraege/onlineantrag?prozessKey=m102.govTecEventHundAnmelden
+The demo process will be made available via this URL: https://dev.behoerden-serviceportal.de/onlineantraege/onlineantrag?prozessKey=m102.govTecEventSondernutzungStrasse&oeId=L100038.OE.207777620&leistungId=99108012005001
 
 # License
 Copyright 2023 SEITENBAU GmbH

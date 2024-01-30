@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="ELEKTRONISCHER_ANTRAG">
-  <process id="m102.govTecEventHundAnmelden" name="Hund anmelden (GovTech Workshop)" isExecutable="true">
+  <process id="m102.govTecEventSondernutzungStrasse" name="Sondernutzung von Straßen anmelden (GovTech Workshop)" isExecutable="true">
     <documentation>Dies ist ein Online-Dienst im Rahmen des GovTech Events 2024 für Demozwecke.</documentation>
     <startEvent id="processStart" name="Start"></startEvent>
     <scriptTask id="init" name="Prozess initiieren" scriptFormat="groovy" activiti:autoStoreVariables="false">
@@ -10,8 +10,8 @@
 // "xmlns" attribute, which would later lead to the very confusing
 // "Unexpected character" exception when trying to deploy the model.</script>
     </scriptTask>
-    <userTask id="vorschaltseite" name="Hund anmelden" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_HundAnmelden_PreliminaryForm:v1.0"></userTask>
-    <userTask id="applicantForm" name="Hund anmelden" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_HundAnmelden_ApplicantForm:v1.0"></userTask>
+    <userTask id="vorschaltseite" name="Sondernutzung von Straßen anmelden" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_SondernutzungStrasse_PreliminaryForm:v1.0"></userTask>
+    <userTask id="applicantForm" name="Sondernutzung von Straßen anmelden" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_SondernutzungStrasse_ApplicantForm:v1.0"></userTask>
     <sequenceFlow id="flow1" sourceRef="processStart" targetRef="init"></sequenceFlow>
     <scriptTask id="validatePreliminaryForm" name="Vorschaltseite validieren" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>// This code will be replaced by the build script. It is important
@@ -59,7 +59,7 @@
     <sequenceFlow id="flow14" name="OK" sourceRef="exclusivegateway3" targetRef="generateSummary">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${isFormValid == true}]]></conditionExpression>
     </sequenceFlow>
-    <userTask id="summaryForm" name="Hund anmelden - Zusammenfassung" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_HundAnmelden_SummaryForm:v1.0"></userTask>
+    <userTask id="summaryForm" name="Sondernutzung von Straßen anmelden - Zusammenfassung" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="formular:102:govTecEvent_SondernutzungStrasse_SummaryForm:v1.0"></userTask>
     <sequenceFlow id="flow15" sourceRef="generateSummary" targetRef="summaryForm"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow16" sourceRef="summaryForm" targetRef="exclusivegateway4"></sequenceFlow>
@@ -103,12 +103,12 @@
           <activiti:expression><![CDATA[${startParameter.startedByUser.postfachHandle}]]></activiti:expression>
         </activiti:field>
         <activiti:field name="betreff">
-          <activiti:string><![CDATA[Hund anmelden: Antrag eingegangen]]></activiti:string>
+          <activiti:string><![CDATA[Sondernutzung von Straßen: Antrag eingegangen]]></activiti:string>
         </activiti:field>
         <activiti:field name="text">
           <activiti:expression><![CDATA[Guten Tag,
 
-Ihre Hundeanmeldung wurde erfolgreich an das GovTech-Event-Team übertragen. 
+Ihr Antrag zur Sondernutzung von Straßen wurde erfolgreich an das GovTech-Event-Team übertragen. 
 
 Im Anhang finden Sie eine Kopie Ihrer gemachten Angaben als PDF-Datei.  (Eventuell hochgeladenen Dateien vom Multiupload-Feld wurden ignoriert.)]]></activiti:expression>
         </activiti:field>
@@ -118,10 +118,10 @@ Im Anhang finden Sie eine Kopie Ihrer gemachten Angaben als PDF-Datei.  (Eventue
       </extensionElements>
     </serviceTask>
     <sequenceFlow id="flow28" sourceRef="sendMessageToApplicant" targetRef="finalPage"></sequenceFlow>
-    <userTask id="finalPage" name="Hundeanmeldung eingegangen" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="showOnce">
-      <documentation>Ihre Hundeanmeldung wurde erfolgreich an das GovTech-Event-Team übertragen.
+    <userTask id="finalPage" name="Antrag eingegangen" activiti:assignee="${startParameter.startedByUser.userId}" activiti:formKey="showOnce">
+      <documentation>Ihr Antrag zur Sondernutzung von Straßen wurde erfolgreich an das GovTech-Event-Team übertragen.
 
-Da dies nur ein Demoprozess ist, müssen Sie mit keinem Hundesteuerbescheid rechnen ;-)
+Da dies nur ein Demoprozess ist, wird die Straße nicht wirklich gesperrt. ;-)
 
 Sie können diese Seite nun schließen.</documentation>
     </userTask>
@@ -133,12 +133,12 @@ Sie können diese Seite nun schließen.</documentation>
           <activiti:string><![CDATA[{"@type":"nkb","id":"c8fab851-1207-4a8a-8a7f-6af61173ff01"}]]></activiti:string>
         </activiti:field>
         <activiti:field name="betreff">
-          <activiti:string><![CDATA[GovTech Event 2024: Antrag für "Hund anmelden" eingegangen]]></activiti:string>
+          <activiti:string><![CDATA[GovTech Event 2024: Antrag auf "Sondernutzung von Straßen" eingegangen]]></activiti:string>
         </activiti:field>
         <activiti:field name="text">
           <activiti:expression><![CDATA[Hallo GovTech-Event-Team,
 
-ein Antrag "Hund anmelden" wurde soeben an Sie übertragen.
+ein Antrag "Sondernutzung von Straßen" wurde soeben an Sie übertragen.
 
 Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgeladenen Dateien vom Multiupload-Feld wurden ignoriert.)]]></activiti:expression>
         </activiti:field>
@@ -176,8 +176,8 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
     <association id="association14" sourceRef="textannotation12" targetRef="usertask1"></association>
     <association id="association15" sourceRef="textannotation12" targetRef="finalPage"></association>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_m102.govTecEventHundAnmelden">
-    <bpmndi:BPMNPlane bpmnElement="m102.govTecEventHundAnmelden" id="BPMNPlane_m102.govTecEventHundAnmelden">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_m102.govTecEventSondernutzungStrasse">
+    <bpmndi:BPMNPlane bpmnElement="m102.govTecEventSondernutzungStrasse" id="BPMNPlane_m102.govTecEventSondernutzungStrasse">
       <bpmndi:BPMNShape bpmnElement="processStart" id="BPMNShape_processStart">
         <omgdc:Bounds height="35.0" width="35.0" x="70.0" y="192.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
