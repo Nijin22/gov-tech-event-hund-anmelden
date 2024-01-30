@@ -63,7 +63,7 @@
     <sequenceFlow id="flow15" sourceRef="generateSummary" targetRef="summaryForm"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow16" sourceRef="summaryForm" targetRef="exclusivegateway4"></sequenceFlow>
-    <sequenceFlow id="flow17" sourceRef="exclusivegateway4" targetRef="createPdf">
+    <sequenceFlow id="flow17" sourceRef="exclusivegateway4" targetRef="setupPayment">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${clickedButton == "continue"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow18" name="&quot;Angaben korrigieren&quot;" sourceRef="exclusivegateway4" targetRef="applicantForm">
@@ -126,7 +126,7 @@ Da dies nur ein Demoprozess ist, müssen Sie mit keinem Hundesteuerbescheid rech
 Sie können diese Seite nun schließen.</documentation>
     </userTask>
     <sequenceFlow id="flow29" sourceRef="finalPage" targetRef="endevent2"></sequenceFlow>
-    <sequenceFlow id="flow30" sourceRef="init" targetRef="vorschaltseite"></sequenceFlow>
+    <sequenceFlow id="flow30" sourceRef="init" targetRef="readProcessParameters"></sequenceFlow>
     <serviceTask id="sendMessageToEventOrg" name="Nachricht an Nutzerkonto Bund der Event-Orga schicken" activiti:class="de.seitenbau.serviceportal.prozess.servicetask.NachrichtVersendenService">
       <extensionElements>
         <activiti:field name="empfaenger">
@@ -149,6 +149,14 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
     </serviceTask>
     <sequenceFlow id="flow31" sourceRef="createPdf" targetRef="sendMessageToEventOrg"></sequenceFlow>
     <sequenceFlow id="flow32" sourceRef="sendMessageToEventOrg" targetRef="sendMessageToApplicant"></sequenceFlow>
+    <scriptTask id="readProcessParameters" name="Prozessparameter einlesen" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>// This code will be replaced by the build script. It is important
+// that this (or any other) comment is written here in the bpmn file
+// as the "buildModel" gradle task would otherwise create an empty
+// "xmlns" attribute, which would later lead to the very confusing
+// "Unexpected character" exception when trying to deploy the model.</script>
+    </scriptTask>
+    <sequenceFlow id="flow33" sourceRef="readProcessParameters" targetRef="vorschaltseite"></sequenceFlow>
     <textAnnotation id="textannotation2">
       <text>Vorschaltseite</text>
     </textAnnotation>
@@ -162,17 +170,11 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
     </textAnnotation>
     <association id="association6" sourceRef="textannotation6" targetRef="usertask1"></association>
     <association id="association7" sourceRef="textannotation6" targetRef="summaryForm"></association>
-    <textAnnotation id="textannotation8">
-      <text>TODO:
-
-- Konfigurieren</text>
-    </textAnnotation>
-    <association id="association9" sourceRef="textannotation8" targetRef="setupPayment"></association>
-    <association id="association10" sourceRef="textannotation8" targetRef="payment"></association>
     <textAnnotation id="textannotation12">
       <text>Abschlussseite</text>
     </textAnnotation>
     <association id="association14" sourceRef="textannotation12" targetRef="usertask1"></association>
+    <association id="association15" sourceRef="textannotation12" targetRef="finalPage"></association>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_m102.govTecEventHundAnmelden">
     <bpmndi:BPMNPlane bpmnElement="m102.govTecEventHundAnmelden" id="BPMNPlane_m102.govTecEventHundAnmelden">
@@ -233,6 +235,9 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
       <bpmndi:BPMNShape bpmnElement="sendMessageToEventOrg" id="BPMNShape_sendMessageToEventOrg">
         <omgdc:Bounds height="55.0" width="201.0" x="2020.0" y="185.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="readProcessParameters" id="BPMNShape_readProcessParameters">
+        <omgdc:Bounds height="60.0" width="100.0" x="301.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation2" id="BPMNShape_textannotation2">
         <omgdc:Bounds height="50.0" width="100.0" x="470.0" y="51.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -241,9 +246,6 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation6" id="BPMNShape_textannotation6">
         <omgdc:Bounds height="50.0" width="100.0" x="1310.0" y="51.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="textannotation8" id="BPMNShape_textannotation8">
-        <omgdc:Bounds height="50.0" width="215.0" x="1510.0" y="331.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation12" id="BPMNShape_textannotation12">
         <omgdc:Bounds height="50.0" width="100.0" x="2530.0" y="51.0"></omgdc:Bounds>
@@ -325,9 +327,8 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
         <omgdi:waypoint x="1420.0" y="211.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
-        <omgdi:waypoint x="1440.0" y="191.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1624.0" y="109.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1833.0" y="185.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1460.0" y="211.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1510.0" y="212.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
         <omgdi:waypoint x="1440.0" y="191.0"></omgdi:waypoint>
@@ -356,7 +357,7 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
         <omgdi:waypoint x="240.0" y="210.0"></omgdi:waypoint>
-        <omgdi:waypoint x="470.0" y="211.0"></omgdi:waypoint>
+        <omgdi:waypoint x="301.0" y="210.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow31" id="BPMNEdge_flow31">
         <omgdi:waypoint x="1886.0" y="212.0"></omgdi:waypoint>
@@ -365,6 +366,10 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
       <bpmndi:BPMNEdge bpmnElement="flow32" id="BPMNEdge_flow32">
         <omgdi:waypoint x="2221.0" y="212.0"></omgdi:waypoint>
         <omgdi:waypoint x="2344.0" y="212.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow33" id="BPMNEdge_flow33">
+        <omgdi:waypoint x="401.0" y="210.0"></omgdi:waypoint>
+        <omgdi:waypoint x="470.0" y="211.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association2" id="BPMNEdge_association2">
         <omgdi:waypoint x="520.0" y="101.0"></omgdi:waypoint>
@@ -378,13 +383,9 @@ Im Anhang finden Sie eine Kopie des Antrags als PDF-Datei. (Eventuell hochgelade
         <omgdi:waypoint x="1360.0" y="101.0"></omgdi:waypoint>
         <omgdi:waypoint x="1360.0" y="182.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="association9" id="BPMNEdge_association9">
-        <omgdi:waypoint x="1617.0" y="331.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1560.0" y="242.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="association10" id="BPMNEdge_association10">
-        <omgdi:waypoint x="1617.0" y="331.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1680.0" y="243.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="association15" id="BPMNEdge_association15">
+        <omgdi:waypoint x="2580.0" y="101.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2580.0" y="183.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
