@@ -17,9 +17,23 @@
                   "width": 12,
                   "additionalConfig": {
                     "@type": "AdditionalHintboxConfig",
-                    "text": "Dieser Onlineantrag wird für Sie vom Behörden-Serviceportal zur sicheren und zuverlässigen Kommunikation mit Ihrer Verwaltung zur Verfügung gestellt.\n\nWenn Sie auf \"Antrag starten\" klicken, öffnet sich das Antragsformular.",
+                    "text": "Dies ist die Vorschaltseite des Prozesses \"Sondernutzung von Straßen beantragen\".\n\nTypischerweise werden wird hier die Antragsberechtigung geklärt, oder geprüft, ob die Nutzer eventuell eher einen anderen Prozess starten sollten, bevor sie die eigentlichen Antragsdaten eingeben müssen.\n\nIn diesem Beispiel wird geprüft, ob die antragstellende Person mindestens 18 Jahre alt ist.",
                     "status": "INFO"
                   }
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "birthdate",
+                  "label": "Geburtsdatum",
+                  "type": "DATE",
+                  "value": null,
+                  "width": 4,
+                  "validationRules": [],
+                  "required": true,
+                  "pickerDisabled": true
                 }
               ]
             }
