@@ -1,6 +1,5 @@
 package govTecEventSondernutzungStrasse
 
-import commons.serviceportal.helpers.ServiceportalLogger
 import commons.serviceportal.validators.MinimumAgeValidator
 import de.seitenbau.serviceportal.scripting.api.v1.ScriptingApiV1
 import de.seitenbau.serviceportal.scripting.api.v1.form.content.FormContentV1
