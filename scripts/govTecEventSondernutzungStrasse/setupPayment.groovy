@@ -17,7 +17,7 @@ PaymentConfigV1 paymentConfig = new BerlinPaymentConfigV1()
 paymentConfig.username = api.getStartParameter().parameters.get("paymentUsername")
 paymentConfig.password = api.getStartParameter().parameters.get("paymentPassword")
 paymentConfig.authId = api.getStartParameter().parameters.get("paymentAuthId")
-paymentConfig.authPassword = api.getStartParameter().parameters.get("paymentAuthPassword\n")
+paymentConfig.authPassword = api.getStartParameter().parameters.get("paymentAuthPassword")
 api.setVariable("paymentConfig", JsonOutput.prettyPrint(JsonOutput.toJson(paymentConfig)))
 
 // Setup transactionConfig
