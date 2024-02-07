@@ -3,7 +3,7 @@
   "title": "Sondernutzung von Straßen beantragen",
   "sections": [
     {
-      "title": "",
+      "title": "Identifikation",
       "fieldGroups": [
         {
           "title": "",
@@ -11,20 +11,234 @@
             {
               "fields": [
                 {
-                  "id": "hint",
-                  "label": "Workshop",
-                  "type": "HINTBOX",
+                  "id": "706f0d69",
+                  "label": "Name",
+                  "type": "STRING",
                   "width": 12,
-                  "additionalConfig": {
-                    "@type": "AdditionalHintboxConfig",
-                    "text": "Der Inhalt dieses Formulars wird durch die Workshop-Teilnehmer erarbeitet werden.",
-                    "status": "INFO"
-                  }
+                  "validationRules": [],
+                  "required": true
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "1973a230",
+                  "label": "Vorname",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": [],
+                  "required": true
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "1e577eee",
+                  "label": "Organisationsbezeichnung",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "ee80180e",
+                  "label": "Anschrift Antragstellers",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "be7d5772",
+                  "label": "Telefonnummer",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "57aa97ef",
+                  "label": "E-mail",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": [],
+                  "required": true
                 }
               ]
             }
           ],
-          "id": "mainGroup"
+          "id": "6ec3d064"
+        }
+      ]
+    },
+    {
+      "title": "Zweckklärung",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "326c589a",
+                  "label": "Zweck",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": [],
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "id": "1fa31923"
+        }
+      ]
+    },
+    {
+      "title": "Ortsklärung",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "65485a14",
+                  "label": "Ort Auswahl (bitte wählen Sie den Ort aus)",
+                  "type": "TEXTAREA",
+                  "width": 12,
+                  "validationRules": [],
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "id": "644ca0b8"
+        }
+      ]
+    },
+    {
+      "title": "Zeitraumklärung",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "f47f6d77",
+                  "label": "Startdatum wählen",
+                  "type": "DATE",
+                  "value": null,
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "6ffa7760",
+                  "label": "Enddatum wählen",
+                  "type": "DATE",
+                  "value": null,
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            }
+          ],
+          "id": "2b803055"
+        }
+      ]
+    },
+    {
+      "title": "Bezahlung",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "c655893e",
+                  "label": "Kalkulierte Gebühren",
+                  "type": "EURO_BETRAG",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "32661d51",
+                  "label": "IBAN",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "411c585f",
+                  "label": "BIC",
+                  "type": "STRING",
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            }
+          ],
+          "id": "36e5755a"
+        }
+      ]
+    },
+    {
+      "title": "Benachritigung",
+      "fieldGroups": [
+        {
+          "title": "",
+          "rows": [
+            {
+              "fields": [
+                {
+                  "id": "3756363b",
+                  "label": "Erinnerung per E-mail Ende des Zeitraums erhalten",
+                  "type": "SINGLE_CHECKBOX",
+                  "value": false,
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "id": "10f33098",
+                  "label": "Ich stimme zu Datenschutz zu",
+                  "type": "SINGLE_CHECKBOX",
+                  "value": false,
+                  "width": 12,
+                  "validationRules": []
+                }
+              ]
+            }
+          ],
+          "id": "6bb47431"
         }
       ]
     }
